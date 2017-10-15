@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>懒加载</title>
+  <script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul,
+    li {
+      list-style: none;
+    }
+
+    .ct {
+      width: 700px;
+      margin: 10px auto;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .items {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    li {
+      width: 30%;
+      height: 200px;
+      border: 1px solid #999;
+      margin: 10px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+<div class="ct">
+  <ul class="items">
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=3361699786,3208453466&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=2333177382,1973860953&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=2159074939,787435769&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img1.imgtn.bdimg.com/it/u=458235413,1989362006&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img4.imgtn.bdimg.com/it/u=1383902155,111892227&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img1.imgtn.bdimg.com/it/u=2693301681,2120264198&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=3074121398,790025517&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=2434999012,1509324781&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=814339745,2845104777&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=2208760863,850966509&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=1671208977,1385343857&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img3.imgtn.bdimg.com/it/u=2267635665,3605046934&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img1.imgtn.bdimg.com/it/u=880584104,2031327419&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=3766045313,471310519&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=2691324694,614395610&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img1.imgtn.bdimg.com/it/u=264177506,2658535205&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=1335772957,720010270&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=410796673,794315086&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=2795646915,962845229&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=2659550273,1105990716&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=2064946169,1861262959&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img4.imgtn.bdimg.com/it/u=2211869826,3967297874&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img4.imgtn.bdimg.com/it/u=822783263,3098249441&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img4.imgtn.bdimg.com/it/u=822783263,3098249441&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img1.imgtn.bdimg.com/it/u=4171386827,1206969606&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img1.imgtn.bdimg.com/it/u=1488531352,3940405357&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=1646055573,1641094767&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img3.imgtn.bdimg.com/it/u=463058990,105550867&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=3197366195,2523210280&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=1010879822,1662098004&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=2047826593,1389032713&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img3.imgtn.bdimg.com/it/u=965827942,1068432725&fm=15&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img3.imgtn.bdimg.com/it/u=3019539874,492416369&fm=15&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=229410027,1286454881&fm=15&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=3527572930,3451120199&fm=27&gp=0.jpg"/></a></li>
+
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=1217539612,1951412821&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img2.imgtn.bdimg.com/it/u=921656929,1428694243&fm=15&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img0.imgtn.bdimg.com/it/u=2983920832,4257042234&fm=15&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img3.imgtn.bdimg.com/it/u=1845523562,3208761815&fm=27&gp=0.jpg"/></a></li>
+    <li><a href="#"><img src="http://i.imgur.com/bS4jUCz.gif"
+                         data-src="http://img5.imgtn.bdimg.com/it/u=1863230502,1136490749&fm=27&gp=0.jpg"/></a></li>
+  </ul>
+</div>
+<script>
+  lazyLoad();
+
+  $(window).on('click', function () {
+    lazyLoad()
+  });
+
+  $(window).on('click', function () {
+    $('.ct img').each(function () {
+      if (checkShow($(this)) && !isLoaded($(this))) {
+        loadImg($this)
+      }
+    })
+  });
+  function checkShow($img) {
+    var scrollTop = $(window).scrollTop();
+    var windowHeight = $(window).height();
+    var offsetTop = $img.offset().top;
+    if (offsetTop < scrollTop + windowHeight && offsetTop > scrollTop) {
+      return true
+    } else {
+      return false
+    }
+
+  }
+
+  function isLoaded($img) {
+    return $img.attr('data-src') === $img.attr('src')
+  }
+
+  function loadImg($img) {
+    $img.attr('src', $img.attr('data-src'))
+  }
+</script>
+</body>
+</html>
